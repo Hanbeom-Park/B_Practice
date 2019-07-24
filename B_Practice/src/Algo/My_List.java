@@ -14,9 +14,13 @@ public class My_List {
 	int HEAD = NODE_SIZE;
     int TAIL = NODE_SIZE + 1;
     int pos;
-    Node[] node=new Node[NODE_SIZE + 2];
+    Node[] node;
     My_List() {
         pos = 0;
+        node=new Node[NODE_SIZE + 2];
+        for (int i = 0; i < node.length; i++) {
+			node[i]=new Node();
+		}
         node[HEAD].next = TAIL;//HEAD노드 다음에는 TAIL노드
         node[TAIL].prev = HEAD;//TAIL노드 이전에는 HEAD노드
     }
@@ -97,6 +101,14 @@ public class My_List {
         node[prev].next = next;
         node[next].prev = prev;
     }
+    void check() {
+    	int t=node[HEAD].next;
+    	//System.out.println(t);
+    	while(t!=TAIL) {
+    		System.out.println(node[t].val);
+    		t=node[t].next;
+    	}
+    }
     class Node {
         int prev;
         int next;
@@ -108,8 +120,35 @@ public class My_List {
 	public static void main(String[] args) {
 		My_List stl_list=new My_List();
 		//TEST CMD
-
-
+		stl_list.push_back(1);
+		stl_list.push_back(2);
+		stl_list.push_back(3);
+		stl_list.push_back(4);
+		stl_list.push_back(5);
+		stl_list.push_back(6);
+		stl_list.push_back(7);
+		stl_list.pop_back();
+		stl_list.insert(3, 99);
+		stl_list.push_back(10);
+		stl_list.push_front(19);
+		stl_list.push_front(20);
+		stl_list.erase(4);
+		stl_list.pop_front();
+		stl_list.check();
+/*		for (int i = 0; i < stl_list.pos; i++) {
+			System.out.print(stl_list.node[i].next+" ");
+			System.out.print(stl_list.node[i].val+" ");
+			System.out.println(stl_list.node[i].prev+" ");
+			
+		}
+		System.out.print(stl_list.node[30000].next+" ");
+		System.out.print(stl_list.node[30000].val+" ");
+		System.out.println(stl_list.node[30000].prev+" ");
+		
+		System.out.print(stl_list.node[30001].next+" ");
+		System.out.print(stl_list.node[30001].val+" ");
+		System.out.println(stl_list.node[30001].prev+" ");*/
+		
 	}
 
 }
