@@ -56,10 +56,10 @@ public class My_Hash {
 	}
 
 	void add(String _name) {
-		name[name_size] = _name; // ¹è¿­¿¡ ÇØ´ç ¹®ÀÚ¿­ ÀúÀå.
-		int key = get_key(_name); // Å° °ª º¯È¯
-		int h_size = table[key][0]; // Å° À§Ä¡ ¹è¿­ÀÇ size ¹İÈ¯
-		table[key][++h_size] = name_size; // h_size´Â ÇØ´ç key ¹è¿­ÀÇ Å©±â, name_size´Â index¹øÈ£ ¹× ¹®ÀÚ¿­¹è¿­ÀÇ Å©±âÀÓ.
+		name[name_size] = _name; // ë°°ì—´ì— í•´ë‹¹ ë¬¸ìì—´ ì €ì¥.
+		int key = get_key(_name); // í‚¤ ê°’ ë³€í™˜
+		int h_size = table[key][0]; // í‚¤ ìœ„ì¹˜ ë°°ì—´ì˜ size ë°˜í™˜
+		table[key][++h_size] = name_size; // h_sizeëŠ” í•´ë‹¹ key ë°°ì—´ì˜ í¬ê¸°, name_sizeëŠ” indexë²ˆí˜¸ ë° ë¬¸ìì—´ë°°ì—´ì˜ í¬ê¸°ì„.
 		table[key][0] += 1;
 		name_size++;
 	}
@@ -73,7 +73,8 @@ public class My_Hash {
 				for (int j = i; j <= h_size; j++) {
 					table[key][j] = table[key][j + 1];
 				}
-				h_size--;
+				//h_size--;
+				table[key][0]--;
 				return true;
 			}
 		}
